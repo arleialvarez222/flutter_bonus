@@ -28,7 +28,7 @@ class PeliculasProvider {
 
 
   void disposeStreams() {
-    _popularesStreamController?.close();
+    _popularesStreamController.close();
   }
 
 
