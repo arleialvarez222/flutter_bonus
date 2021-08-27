@@ -70,24 +70,19 @@ class HomePage extends StatelessWidget {
       },
     );
 
-
-
-    
-
-
   }
-
 
   Widget _footer(BuildContext context){
 
     return Container(
       width: double.infinity,
+     // height: 200,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(left: 20.0),
-            child: Text('Populares', style: Theme.of(context).textTheme.subhead  )
+            child: Text('Populares', style: Theme.of(context).textTheme.bodyText1  )
           ),
           SizedBox(height: 10.0),
 

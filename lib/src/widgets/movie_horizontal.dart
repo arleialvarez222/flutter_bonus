@@ -34,7 +34,7 @@ class MovieHorizontal extends StatelessWidget {
       child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
-        // children: _tarjetas(context),
+        //children: _tarjetas(context),
         itemCount: peliculas.length,
         itemBuilder: ( context, i ) => _tarjeta(context, peliculas[i] ),
       ),
@@ -59,7 +59,7 @@ class MovieHorizontal extends StatelessWidget {
                   image: NetworkImage( pelicula.getPosterImg() ),
                   placeholder: AssetImage('assets/img/no-image.jpg'),
                   fit: BoxFit.cover,
-                  height: 160.0,
+                  height: 145.0,
                 ),
               ),
             ),
@@ -85,7 +85,7 @@ class MovieHorizontal extends StatelessWidget {
   }
 
 
-  List<Widget> _tarjetas(BuildContext context) {
+  /* List<Widget> _tarjetas(BuildContext context) {
 
     return peliculas.map( (pelicula) {
 
@@ -115,6 +115,6 @@ class MovieHorizontal extends StatelessWidget {
 
     }).toList();
 
-  }
+  } */
 
 }
