@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/src/models/pelicula_model.dart';
 import 'package:peliculas/src/providers/peliculas_provider.dart';
 import 'package:peliculas/src/search/search_delegate.dart';
 
@@ -38,7 +39,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
               _swiperTarjetas(),
               SizedBox(height: 20,),
               _footer(context)
@@ -54,10 +55,11 @@ class HomePage extends StatelessWidget {
 
     return FutureBuilder(
       future: peliculasProvider.getEnCines(),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> snapshot) {
         
         if ( snapshot.hasData ) {
-          return CardSwiper( peliculas: snapshot.data );
+          //return CardSwiper( peliculas: [],  );
+          return CardSwiper( peliculas: snapshot.data!,  );
         } else {
           return Container(
             height: 400.0,
@@ -77,23 +79,25 @@ class HomePage extends StatelessWidget {
     return Container(
       width: double.infinity,
      // height: 200,
+     margin: EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 20.0),
+            padding: EdgeInsets.only(left: 20.0, bottom: 10),
             child: Text('Populares', style: Theme.of(context).textTheme.bodyText1  )
           ),
           SizedBox(height: 10.0),
 
           StreamBuilder(
             stream: peliculasProvider.popularesStream,
-            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> snapshot) {
               
               if ( snapshot.hasData ) {
                 return MovieHorizontal(
                    
-                  peliculas: snapshot.data,
+                  //peliculas: [],
+                  peliculas: snapshot.data!,
                   siguientePagina: peliculasProvider.getPopulares,
                 );
               } else {

@@ -84,7 +84,7 @@ class DataSearch extends SearchDelegate {
             final peliculas = snapshot.data;
 
             return ListView(
-              children: peliculas.map( (pelicula) {
+              children: peliculas!.map( ( pelicula) {
                   return ListTile(
                     leading: FadeInImage(
                       image: NetworkImage( pelicula.getPosterImg() ),
@@ -92,11 +92,11 @@ class DataSearch extends SearchDelegate {
                       width: 50.0,
                       fit: BoxFit.contain,
                     ),
-                    title: Text( pelicula.title ),
-                    subtitle: Text( pelicula.originalTitle ),
+                    title: Text( pelicula.title! ),
+                    subtitle: Text( pelicula.originalTitle! ),
                     onTap: (){
                       close( context, null);
-                      pelicula.uniqueId = '';
+                      //pelicula.uniqueId = '';
                       Navigator.pushNamed(context, 'detalle', arguments: pelicula);
                     },
                   );
